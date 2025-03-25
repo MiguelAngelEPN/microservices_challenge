@@ -1,0 +1,56 @@
+services:
+  core-service:
+    build:
+      context: ./core-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - microservices-network
+    depends_on:
+      - database
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - microservices-network
+    depends_on:
+      - database
+
+  account-service:
+    build:
+      context: ./account-service
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - microservices-network
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge
