@@ -1,27 +1,24 @@
 # microservices_challenge
-The challenge of banking transaction microservices
+**The challenge of banking transaction microservices**
 
-Este proyecto implementa un sistema basado en microservicios utilizando NestJS, MongoDB, y MySQL. Se compone de los siguientes servicios:
+Este proyecto implementa un sistema basado en microservicios utilizando NestJS, MongoDB y MySQL. Se compone de los siguientes servicios:
 
-Core Service (Gestión de transacciones)
+- **Core Service** (Gestión de transacciones)
+- **User Service** (Gestión de usuarios y cuentas de usuario)
+- **Account Service** (Gestión de cuentas y saldos)
 
-User Service (Gestión de usuarios y cuentas de usuario)
-
-Account Service (Gestión de cuentas y saldos)
-
-🚀 Requisitos Previos
+## 🚀 Requisitos Previos
 
 Antes de ejecutar los servicios, asegúrate de tener instalado lo siguiente:
 
-Node.js (versión 16 o superior)
+- **Node.js** (versión 16 o superior)
+- **Docker** (para ejecución con contenedores opcional)
+- **MongoDB** (si ejecutas sin Docker)
+- **MySQL** (si ejecutas sin Docker)
 
-Docker (para ejecución con contenedores opcional)
+## 📂 Estructura del Proyecto
 
-MongoDB (si ejecutas sin Docker)
 
-MySQL (si ejecutas sin Docker)
-
-📂 Estructura del Proyecto
 .
 ├── core-service/      # Servicio principal de transacciones
 ├── user-service/      # Servicio de usuarios
@@ -29,16 +26,19 @@ MySQL (si ejecutas sin Docker)
 ├── docker-compose.yml # Configuración para ejecución con Docker
 ├── README.md          # Documentación del proyecto
 
-🔧 Configuración
 
-Cada servicio tiene un archivo .env donde se definen las variables de entorno necesarias. Asegúrate de crear estos archivos dentro de cada carpeta de servicio con el siguiente contenido:
+## 🔧 Configuración
 
-📌 Configuración de Core Service (core-service/.env)
+Cada servicio tiene un archivo `.env` donde se definen las variables de entorno necesarias. Asegúrate de crear estos archivos dentro de cada carpeta de servicio con el siguiente contenido:
 
+### 📌 Configuración de Core Service (core-service/.env)
+
+```env
 PORT=3000
 USER_SERVICE=http://localhost:3001/user/service
-ACOUNT_SERVICE=http://localhost:3002/account/service
+ACCOUNT_SERVICE=http://localhost:3002/account/service
 MONGO_URI=mongodb://localhost:27017/transactions
+
 
 📌 Configuración de User Service (user-service/.env)
 
@@ -57,7 +57,7 @@ MYSQL_USER=root
 MYSQL_PASSWORD=yourpassword
 MYSQL_DATABASE=accounts_db
 
-🏃‍♂️ Ejecución
+### 🏃‍♂️ Ejecución
 1️⃣Instala dependencias en cada servicio
 
 Ejecuta estos comandos dentro de cada carpeta (core-service/, user-service/, account-service/):
